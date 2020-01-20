@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.4.4",
+    "prettier": "^1.19.1",
+    "tiptap": "^1.26.6",
+    "tiptap-extensions": "^1.28.6",
     "vue": "^2.6.10"
   },
   "devDependencies": {
@@ -29,7 +32,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": 0
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

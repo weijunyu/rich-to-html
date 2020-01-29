@@ -152,7 +152,51 @@
           </button>
         </div>
       </editor-menu-bar>
+      <editor-menu-bubble
+        class="menububble"
+        :editor="editor"
+        @hide="hideLinkMenu"
+        v-slot="{ commands, isActive, getMarkAttrs, menu }"
+      >
+        <div
+          class="menububble"
+          :class="{ 'is-active': menu.isActive }"
+          :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
+        >
+          <form
+            class="menububble__form"
+            v-if="linkMenuIsActive"
+            @submit.prevent="setLinkUrl(commands.link, linkUrl)"
+          >
+            <input
+              class="menububble__input"
+              type="text"
+              v-model="linkUrl"
+              placeholder="https://"
+              ref="linkInput"
+              @keydown.esc="hideLinkMenu"
+            />
+            <button
+              class="menububble__button"
+              @click="setLinkUrl(commands.link, null)"
+              type="button"
+            >
+              OK
+            </button>
+          </form>
 
+          <template v-else>
+            <button
+              class="menububble__button"
+              @click="showLinkMenu(getMarkAttrs('link'))"
+              :class="{ 'is-active': isActive.link() }"
+            >
+              <span>{{ isActive.link() ? "Update Link" : "Add Link" }}</span>
+              <i class="fas fa-link"></i>
+            </button>
+          </template>
+        </div>
+      </editor-menu-bubble>
       <editor-content
         class="editor__content"
         id="editor__content"
@@ -168,7 +212,7 @@
 </template>
 
 <script>
-import { Editor, EditorContent, EditorMenuBar } from "tiptap";
+import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from "tiptap";
 import {
   Blockquote,
   CodeBlock,
@@ -194,7 +238,8 @@ import tippy from "tippy.js";
 export default {
   components: {
     EditorContent,
-    EditorMenuBar
+    EditorMenuBar,
+    EditorMenuBubble
   },
   data() {
     return {
@@ -230,7 +275,9 @@ export default {
           this.html = getHTML();
         }
       }),
-      html: "Update content to see changes"
+      html: "Update content to see changes",
+      linkUrl: null,
+      linkMenuIsActive: false
     };
   },
   methods: {
@@ -250,6 +297,21 @@ export default {
     clearContent() {
       this.editor.clearContent(true);
       this.editor.focus();
+    },
+    showLinkMenu(attrs) {
+      this.linkUrl = attrs.href;
+      this.linkMenuIsActive = true;
+      this.$nextTick(() => {
+        this.$refs.linkInput.focus();
+      });
+    },
+    hideLinkMenu() {
+      this.linkUrl = null;
+      this.linkMenuIsActive = false;
+    },
+    setLinkUrl(command, url) {
+      command({ href: url });
+      this.hideLinkMenu();
     }
   },
   mounted() {
@@ -303,6 +365,29 @@ export default {
   background-color: #efefef;
   font-weight: bolder;
 }
+
+.menububble.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menububble {
+  position: absolute;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+
+  z-index: 51;
+
+  padding: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.menububble .menububble__button i {
+  margin-left: 0.25rem;
+}
+
 .editor__content {
   border: 1px solid black;
 }

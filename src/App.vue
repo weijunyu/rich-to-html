@@ -132,6 +132,8 @@
           <button class="menubar__button" @click="clearContent">Clear Content</button>
 
           <button class="menubar__button copy-html" @click="copyHtml">Copy HTML</button>
+
+          <button class="menubar__button copy-markdown" @click="copyMarkdown">Copy Markdown</button>
         </div>
       </editor-menu-bar>
       <editor-menu-bubble
@@ -195,11 +197,11 @@
 
     <div class="export" v-if="viewMode === 'html'">
       <h3>HTML</h3>
-      <pre><code>{{ beautify(html) }}</code></pre>
+      <pre><code>{{ displayedHtml }}</code></pre>
     </div>
     <div class="export" v-if="viewMode === 'markdown'">
       <h3>Markdown</h3>
-      <pre><code>{{ turndown(html) }}</code></pre>
+      <pre><code>{{ displayedMarkdown }}</code></pre>
     </div>
   </div>
 </template>
@@ -285,6 +287,13 @@ export default {
         }
       });
     },
+    copyMarkdown() {
+      new ClipboardJS(".copy-markdown", {
+        text: () => {
+          return this.turndown(this.html);
+        }
+      });
+    },
     beautify(html) {
       return prettier.format(html, {
         parser: "html",
@@ -315,10 +324,21 @@ export default {
       this.hideLinkMenu();
     }
   },
+  computed: {
+    displayedHtml() {
+      return this.beautify(this.html);
+    },
+    displayedMarkdown() {
+      return this.turndown(this.html);
+    }
+  },
   mounted() {
     tippy(".copy-html", {
       content: "Copied",
-      interactive: true,
+      trigger: "click"
+    });
+    tippy(".copy-markdown", {
+      content: "Copied",
       trigger: "click"
     });
   }
@@ -390,6 +410,11 @@ export default {
 }
 
 .editor__content {
-  border: 1px solid black;
+  border: 1px solid grey;
+}
+
+.toggle-view {
+  margin-bottom: 1rem;
+  text-align: center;
 }
 </style>

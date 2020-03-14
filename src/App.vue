@@ -208,6 +208,10 @@
       <h3>HTML</h3>
       <pre><code>{{ beautify(html) }}</code></pre>
     </div>
+    <div class="export">
+      <h3>Markdown</h3>
+      <pre><code>{{ turndown(html) }}</code></pre>
+    </div>
   </div>
 </template>
 
@@ -235,6 +239,7 @@ import {
 import prettier from "prettier/standalone";
 import parserHtml from "prettier/parser-html";
 import tippy from "tippy.js";
+import Turndown from "turndown/lib/turndown.browser.es";
 export default {
   components: {
     EditorContent,
@@ -293,6 +298,10 @@ export default {
         parser: "html",
         plugins: [parserHtml]
       });
+    },
+    turndown(html) {
+      let turndownService = new Turndown();
+      return turndownService.turndown(html);
     },
     clearContent() {
       this.editor.clearContent(true);

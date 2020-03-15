@@ -55,37 +55,49 @@
             class="menubar__button"
             :class="{ 'is-active': isActive.heading({ level: 1 }) }"
             @click="commands.heading({ level: 1 })"
-          >H1</button>
+          >
+            H1
+          </button>
 
           <button
             class="menubar__button"
             :class="{ 'is-active': isActive.heading({ level: 2 }) }"
             @click="commands.heading({ level: 2 })"
-          >H2</button>
+          >
+            H2
+          </button>
 
           <button
             class="menubar__button"
             :class="{ 'is-active': isActive.heading({ level: 3 }) }"
             @click="commands.heading({ level: 3 })"
-          >H3</button>
+          >
+            H3
+          </button>
 
           <button
             class="menubar__button"
             :class="{ 'is-active': isActive.heading({ level: 4 }) }"
             @click="commands.heading({ level: 4 })"
-          >H4</button>
+          >
+            H4
+          </button>
 
           <button
             class="menubar__button"
             :class="{ 'is-active': isActive.heading({ level: 5 }) }"
             @click="commands.heading({ level: 5 })"
-          >H5</button>
+          >
+            H5
+          </button>
 
           <button
             class="menubar__button"
             :class="{ 'is-active': isActive.heading({ level: 6 }) }"
             @click="commands.heading({ level: 6 })"
-          >H6</button>
+          >
+            H6
+          </button>
 
           <button
             class="menubar__button"
@@ -119,9 +131,16 @@
             <i class="fas fa-code"></i>(block)
           </button>
 
-          <button class="menubar__button" @click="commands.horizontal_rule">--</button>
+          <button class="menubar__button" @click="commands.horizontal_rule">
+            --
+          </button>
 
-          <button class="menubar__button"><i class="fas fa-image"></i></button>
+          <button
+            class="menubar__button"
+            @click="showImagePrompt(commands.image)"
+          >
+            <i class="fas fa-image"></i>
+          </button>
 
           <button class="menubar__button" @click="commands.undo">
             <i class="fas fa-undo"></i>
@@ -131,11 +150,17 @@
             <i class="fas fa-redo"></i>
           </button>
 
-          <button class="menubar__button" @click="clearContent">Clear Content</button>
+          <button class="menubar__button" @click="clearContent">
+            Clear Content
+          </button>
 
-          <button class="menubar__button copy-html" @click="copyHtml">Copy HTML</button>
+          <button class="menubar__button copy-html" @click="copyHtml">
+            Copy HTML
+          </button>
 
-          <button class="menubar__button copy-markdown" @click="copyMarkdown">Copy Markdown</button>
+          <button class="menubar__button copy-markdown" @click="copyMarkdown">
+            Copy Markdown
+          </button>
         </div>
       </editor-menu-bar>
       <editor-menu-bubble
@@ -166,7 +191,9 @@
               class="menububble__button"
               @click="setLinkUrl(commands.link, null)"
               type="button"
-            >OK</button>
+            >
+              OK
+            </button>
           </form>
 
           <template v-else>
@@ -181,20 +208,28 @@
           </template>
         </div>
       </editor-menu-bubble>
-      <editor-content class="editor__content" id="editor__content" :editor="editor" />
+      <editor-content
+        class="editor__content"
+        id="editor__content"
+        :editor="editor"
+      />
     </div>
 
     <div class="toggle-view">
       <button
         class="sgds-button"
-        :class="{'is-secondary': viewMode === 'html' }"
+        :class="{ 'is-secondary': viewMode === 'html' }"
         @click="viewMode = 'html'"
-      >View HTML</button>
+      >
+        View HTML
+      </button>
       <button
         class="sgds-button"
-        :class="{'is-secondary': viewMode === 'markdown' }"
+        :class="{ 'is-secondary': viewMode === 'markdown' }"
         @click="viewMode = 'markdown'"
-      >View Markdown</button>
+      >
+        View Markdown
+      </button>
     </div>
 
     <div class="export" v-if="viewMode === 'html'">
@@ -326,6 +361,12 @@ export default {
     setLinkUrl(command, url) {
       command({ href: url });
       this.hideLinkMenu();
+    },
+    showImagePrompt(command) {
+      const src = prompt("Enter image URL");
+      if (src != null) {
+        command({ src });
+      }
     }
   },
   computed: {

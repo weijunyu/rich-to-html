@@ -121,6 +121,8 @@
 
           <button class="menubar__button" @click="commands.horizontal_rule">--</button>
 
+          <button class="menubar__button"><i class="fas fa-image"></i></button>
+
           <button class="menubar__button" @click="commands.undo">
             <i class="fas fa-undo"></i>
           </button>
@@ -210,22 +212,23 @@
 import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from "tiptap";
 import {
   Blockquote,
+  Bold,
+  BulletList,
+  Code,
   CodeBlock,
   HardBreak,
   Heading,
+  History,
   HorizontalRule,
-  OrderedList,
-  BulletList,
-  ListItem,
-  TodoItem,
-  TodoList,
-  Bold,
-  Code,
+  Image,
   Italic,
   Link,
+  ListItem,
+  OrderedList,
   Strike,
-  Underline,
-  History
+  TodoItem,
+  TodoList,
+  Underline
 } from "tiptap-extensions";
 import prettier from "prettier/standalone";
 import parserHtml from "prettier/parser-html";
@@ -251,22 +254,23 @@ export default {
       editor: new Editor({
         extensions: [
           new Blockquote(),
+          new Bold(),
           new BulletList(),
+          new Code(),
           new CodeBlock(),
           new HardBreak(),
           new Heading({ levels: [1, 2, 3, 4, 5, 6] }),
+          new History(),
           new HorizontalRule(),
+          new Image(),
+          new Italic(),
+          new Link(),
           new ListItem(),
           new OrderedList(),
+          new Strike(),
           new TodoItem(),
           new TodoList(),
-          new Link(),
-          new Bold(),
-          new Code(),
-          new Italic(),
-          new Strike(),
-          new Underline(),
-          new History()
+          new Underline()
         ],
         content: initialContent,
         onUpdate: ({ getHTML }) => {

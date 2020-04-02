@@ -1,5 +1,5 @@
 <template>
-  <div class="app sgds-container content has-default-header-styles">
+  <div class="app">
     <div class="editor">
       <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
         <div class="menubar">
@@ -217,15 +217,15 @@
 
     <div class="toggle-view">
       <button
-        class="sgds-button"
-        :class="{ 'is-secondary': viewMode === 'html' }"
+        class="button"
+        :class="{ 'active': viewMode === 'html' }"
         @click="viewMode = 'html'"
       >
         View HTML
       </button>
       <button
-        class="sgds-button"
-        :class="{ 'is-secondary': viewMode === 'markdown' }"
+        class="button"
+        :class="{ 'active': viewMode === 'markdown' }"
         @click="viewMode = 'markdown'"
       >
         View Markdown
@@ -461,5 +461,20 @@ export default {
 .toggle-view {
   margin-bottom: 1rem;
   text-align: center;
+}
+
+.button {
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #000;
+}
+.button:hover {
+  cursor: pointer;
+  background: #efefef;
+}
+.button:active {
+  color: #1379ff;
+  background-color: #efefef;
+  font-weight: bold;
 }
 </style>

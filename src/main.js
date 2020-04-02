@@ -1,12 +1,12 @@
 import Vue from "vue";
 import App from "./App.vue";
 
-import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
-import "@fortawesome/fontawesome-free/css/solid.min.css";
-
-import "sgds-govtech/css/sgds.css";
+import "@fortawesome/fontawesome-free/css/fontawesome.css";
+import "@fortawesome/fontawesome-free/css/solid.css";
 
 import "tippy.js/dist/tippy.css";
+
+import "./main.css";
 
 Vue.config.productionTip = false;
 

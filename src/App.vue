@@ -261,6 +261,10 @@ import {
   ListItem,
   OrderedList,
   Strike,
+  Table,
+  TableHeader,
+  TableCell,
+  TableRow,
   TodoItem,
   TodoList,
   Underline,
@@ -303,6 +307,12 @@ export default {
           new ListItem(),
           new OrderedList(),
           new Strike(),
+          new Table({
+            resizable: true,
+          }),
+          new TableHeader(),
+          new TableCell(),
+          new TableRow(),
           new TodoItem(),
           new TodoList(),
           new Underline(),
@@ -472,9 +482,9 @@ export default {
   cursor: pointer;
   background: #efefef;
 }
-.button:active {
+.button:active,
+.button.active {
   color: #1379ff;
-  background-color: #efefef;
-  font-weight: bold;
+  background-color: #e4e4e4;
 }
 </style>

@@ -218,14 +218,14 @@
     <div class="toggle-view">
       <button
         class="button"
-        :class="{ 'active': viewMode === 'html' }"
+        :class="{ active: viewMode === 'html' }"
         @click="viewMode = 'html'"
       >
         View HTML
       </button>
       <button
         class="button"
-        :class="{ 'active': viewMode === 'markdown' }"
+        :class="{ active: viewMode === 'markdown' }"
         @click="viewMode = 'markdown'"
       >
         View Markdown
@@ -263,7 +263,7 @@ import {
   Strike,
   TodoItem,
   TodoList,
-  Underline
+  Underline,
 } from "tiptap-extensions";
 import prettier from "prettier/standalone";
 import parserHtml from "prettier/parser-html";
@@ -282,7 +282,7 @@ export default {
   components: {
     EditorContent,
     EditorMenuBar,
-    EditorMenuBubble
+    EditorMenuBubble,
   },
   data() {
     return {
@@ -305,17 +305,17 @@ export default {
           new Strike(),
           new TodoItem(),
           new TodoList(),
-          new Underline()
+          new Underline(),
         ],
         content: initialContent,
         onUpdate: ({ getHTML }) => {
           this.html = getHTML();
-        }
+        },
       }),
       html: initialContent,
       linkUrl: null,
       linkMenuIsActive: false,
-      viewMode: "html" // or "markdown"
+      viewMode: "html", // or "markdown"
     };
   },
   methods: {
@@ -323,20 +323,20 @@ export default {
       new ClipboardJS(".copy-html", {
         text: () => {
           return this.beautify(this.html);
-        }
+        },
       });
     },
     copyMarkdown() {
       new ClipboardJS(".copy-markdown", {
         text: () => {
           return this.turndown(this.html);
-        }
+        },
       });
     },
     beautify(html) {
       return prettier.format(html, {
         parser: "html",
-        plugins: [parserHtml]
+        plugins: [parserHtml],
       });
     },
     turndown(html) {
@@ -367,7 +367,7 @@ export default {
       if (src != null) {
         command({ src });
       }
-    }
+    },
   },
   computed: {
     displayedHtml() {
@@ -375,18 +375,18 @@ export default {
     },
     displayedMarkdown() {
       return this.turndown(this.html);
-    }
+    },
   },
   mounted() {
     tippy(".copy-html", {
       content: "Copied",
-      trigger: "click"
+      trigger: "click",
     });
     tippy(".copy-markdown", {
       content: "Copied",
-      trigger: "click"
+      trigger: "click",
     });
-  }
+  },
 };
 </script>
 

@@ -4,8 +4,15 @@ body {
 }
 @media (max-width: 768px) {
   body {
-    padding: 0;
+    padding: 0 1rem;
   }
+}
+
+blockquote {
+  font-style: normal;
+  margin: 1rem 2rem;
+  border-left: 4px solid #CCC;
+  padding-left: 8px;
 }
 
 table {

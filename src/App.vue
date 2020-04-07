@@ -128,7 +128,7 @@
             :class="{ 'is-active': isActive.code_block() }"
             @click="commands.code_block"
           >
-            <i class="fas fa-code"></i>(block)
+            <i class="fas fa-paragraph"></i><i class="fas fa-code"></i>
           </button>
 
           <button class="menubar__button" @click="commands.horizontal_rule">

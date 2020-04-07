@@ -468,6 +468,13 @@ export default {
 .ProseMirror-focused {
   outline: none;
 }
+.ProseMirror > pre {
+  padding: 1rem;
+  margin: .5rem;
+  background: #3e3e3e;
+  color: white;
+  border-radius: 4px;
+}
 </style>
 
 <style scoped>
@@ -556,5 +563,9 @@ export default {
 .button.active {
   color: #1379ff;
   background-color: #e4e4e4;
+}
+
+.export pre {
+  overflow: auto;
 }
 </style>

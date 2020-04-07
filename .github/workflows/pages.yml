@@ -16,6 +16,8 @@ jobs:
       run: npm ci
     - name: Run build
       run: npm run build
+      env:
+        CUSTOM_PUBLIC_PATH: /rich-to-html/
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:

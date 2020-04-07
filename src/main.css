@@ -11,7 +11,9 @@ html {
 table {
   border-collapse: collapse;
 }
-table, table td, table th {
+table,
+table td,
+table th {
   border: 1px solid darkgrey;
   padding: 0.5rem;
 }

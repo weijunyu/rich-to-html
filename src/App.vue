@@ -132,22 +132,7 @@
           </button>
 
           <button class="menubar__button" @click="commands.horizontal_rule">
-            --
-          </button>
-
-          <button
-            class="menubar__button"
-            @click="showImagePrompt(commands.image)"
-          >
-            <i class="fas fa-image"></i>
-          </button>
-
-          <button class="menubar__button" @click="commands.undo">
-            <i class="fas fa-undo"></i>
-          </button>
-
-          <button class="menubar__button" @click="commands.redo">
-            <i class="fas fa-redo"></i>
+            &boxh;
           </button>
 
           <button
@@ -189,6 +174,21 @@
               <Icon src="/assets/combine_cells.svg" alt="combine cells" />
             </button>
           </template>
+
+          <button
+            class="menubar__button"
+            @click="showImagePrompt(commands.image)"
+          >
+            <i class="fas fa-image"></i>
+          </button>
+
+          <button class="menubar__button" @click="commands.undo">
+            <i class="fas fa-undo"></i>
+          </button>
+
+          <button class="menubar__button" @click="commands.redo">
+            <i class="fas fa-redo"></i>
+          </button>
 
           <button class="menubar__button" @click="clearContent">
             Clear Content
@@ -306,8 +306,6 @@ import {
   TableHeader,
   TableCell,
   TableRow,
-  TodoItem,
-  TodoList,
   Underline,
 } from "tiptap-extensions";
 import prettier from "prettier/standalone";
@@ -316,13 +314,37 @@ import tippy from "tippy.js";
 import ClipboardJS from "clipboard";
 import Turndown from "turndown/lib/turndown.browser.es";
 import Icon from "./components/Icon.vue";
-const initialContent = `
-  <h2>
-    Export HTML or JSON
-  </h2>
-  <p>
-    You are able to export your data as <code>HTML</code> or <code>JSON</code>.
-  </p>
+const initialContent = `<h1>Convert rich text to HTML or Markdown</h1>
+<p>
+  Start writing, or paste formatted content from HTML documents, Google Docs,
+  Microsoft Word etc.
+</p>
+<h2>Export HTML or Markdown</h2>
+<p>
+  Convert and export your document as <code>HTML</code> or
+  <code>Markdown</code>.
+</p>
+<p>Based on:</p>
+<ul>
+  <li>
+    <p>
+      <a
+        href="https://github.com/scrumpy/tiptap"
+        rel="noopener noreferrer nofollow"
+        >tiptap</a
+      >
+    </p>
+  </li>
+  <li>
+    <p>
+      <a
+        href="https://github.com/domchristie/turndown"
+        rel="noopener noreferrer nofollow"
+        >turndown</a
+      >
+    </p>
+  </li>
+</ul>
 `;
 export default {
   components: {
@@ -356,8 +378,6 @@ export default {
           new TableHeader(),
           new TableCell(),
           new TableRow(),
-          new TodoItem(),
-          new TodoList(),
           new Underline(),
         ],
         content: initialContent,

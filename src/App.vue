@@ -150,6 +150,46 @@
             <i class="fas fa-redo"></i>
           </button>
 
+          <button
+            class="menubar__button"
+            @click="
+              commands.createTable({
+                rowsCount: 3,
+                colsCount: 3,
+                withHeaderRow: false,
+              })
+            "
+          >
+            <Icon src="/assets/table.svg" alt="insert table" />
+          </button>
+
+          <template v-if="isActive.table()">
+            <button class="menubar__button" @click="commands.deleteTable">
+              <Icon src="/assets/delete_table.svg" alt="delete table" />
+            </button>
+            <button class="menubar__button" @click="commands.addColumnBefore">
+              <Icon src="/assets/add_col_before.svg" alt="add column before" />
+            </button>
+            <button class="menubar__button" @click="commands.addColumnAfter">
+              <Icon src="/assets/add_col_after.svg" alt="add column after" />
+            </button>
+            <button class="menubar__button" @click="commands.deleteColumn">
+              <Icon src="/assets/delete_col.svg" alt="delete column" />
+            </button>
+            <button class="menubar__button" @click="commands.addRowBefore">
+              <Icon src="/assets/add_row_before.svg" alt="add row before" />
+            </button>
+            <button class="menubar__button" @click="commands.addRowAfter">
+              <Icon src="/assets/add_row_after.svg" alt="add row after" />
+            </button>
+            <button class="menubar__button" @click="commands.deleteRow">
+              <Icon src="/assets/delete_row.svg" alt="delete row" />
+            </button>
+            <button class="menubar__button" @click="commands.toggleCellMerge">
+              <Icon src="/assets/combine_cells.svg" alt="combine cells" />
+            </button>
+          </template>
+
           <button class="menubar__button" @click="clearContent">
             Clear Content
           </button>
@@ -274,6 +314,7 @@ import parserHtml from "prettier/parser-html";
 import tippy from "tippy.js";
 import ClipboardJS from "clipboard";
 import Turndown from "turndown/lib/turndown.browser.es";
+import Icon from "./components/Icon.vue";
 const initialContent = `
   <h2>
     Export HTML or JSON
@@ -287,6 +328,7 @@ export default {
     EditorContent,
     EditorMenuBar,
     EditorMenuBubble,
+    Icon,
   },
   data() {
     return {

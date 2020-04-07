@@ -257,20 +257,26 @@
     </div>
 
     <div class="toggle-view">
-      <button
-        class="button"
-        :class="{ active: viewMode === 'html' }"
-        @click="viewMode = 'html'"
-      >
-        View HTML
-      </button>
-      <button
-        class="button"
-        :class="{ active: viewMode === 'markdown' }"
-        @click="viewMode = 'markdown'"
-      >
-        View Markdown
-      </button>
+      <span>
+        <button
+          class="tab"
+          :class="{ active: viewMode === 'html' }"
+          @click="viewMode = 'html'"
+        >
+          View HTML
+        </button>
+        <button
+          class="tab"
+          :class="{ active: viewMode === 'markdown' }"
+          @click="viewMode = 'markdown'"
+        >
+          View Markdown
+        </button>
+      </span>
+
+      <a href="https://github.com/weijunyu/rich-to-html">
+        <Icon src="/assets/GitHub-Mark-32px.png"></Icon
+      ></a>
     </div>
 
     <div class="export" v-if="viewMode === 'html'">
@@ -470,7 +476,7 @@ export default {
 }
 .ProseMirror > pre {
   padding: 1rem;
-  margin: .5rem;
+  margin: 0.5rem;
   background: #3e3e3e;
   color: white;
   border-radius: 4px;
@@ -547,11 +553,35 @@ export default {
 
 .toggle-view {
   margin-bottom: 1rem;
-  text-align: center;
+  border-bottom: 0.5rem solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tab {
+  padding: 1rem;
+  background: fff;
+  border: none;
+  border-radius: 0.5rem 0.5rem 0 0;
+  cursor: pointer;
+}
+
+.tab:hover {
+  background-color: #f0f0f0;
+}
+
+.tab:active,
+.tab.active {
+  background-color: #e0e0e0;
+}
+
+.tab:focus {
+  outline: none;
 }
 
 .button {
-  padding: 1rem;
+  padding: .5rem;
   background: #fff;
   border: 1px solid #000;
 }
@@ -562,7 +592,7 @@ export default {
 .button:active,
 .button.active {
   color: #1379ff;
-  background-color: #e4e4e4;
+  background-color: #e0e0e0;
 }
 
 .export pre {

@@ -218,6 +218,7 @@
             class="menububble__form"
             v-if="linkMenuIsActive"
             @submit.prevent="setLinkUrl(commands.link, linkUrl)"
+            style="display: flex"
           >
             <input
               class="menububble__input"
@@ -228,7 +229,7 @@
               @keydown.esc="hideLinkMenu"
             />
             <button
-              class="menububble__button"
+              class="menububble__button button"
               @click="setLinkUrl(commands.link, null)"
               type="button"
             >
@@ -238,7 +239,7 @@
 
           <template v-else>
             <button
-              class="menububble__button"
+              class="menububble__button button"
               @click="showLinkMenu(getMarkAttrs('link'))"
               :class="{ 'is-active': isActive.link() }"
             >
@@ -441,6 +442,13 @@ export default {
   },
 };
 </script>
+
+<style>
+#editor-content:focus,
+.ProseMirror-focused {
+  outline: none;
+}
+</style>
 
 <style scoped>
 .editor {

@@ -5,7 +5,7 @@
         <div class="menubar">
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.bold() }"
+            :class="{ active: isActive.bold() }"
             @click="commands.bold"
           >
             <i class="fas fa-bold"></i>
@@ -13,7 +13,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.italic() }"
+            :class="{ active: isActive.italic() }"
             @click="commands.italic"
           >
             <i class="fas fa-italic"></i>
@@ -21,7 +21,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.strike() }"
+            :class="{ active: isActive.strike() }"
             @click="commands.strike"
           >
             <i class="fas fa-strikethrough"></i>
@@ -29,7 +29,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.underline() }"
+            :class="{ active: isActive.underline() }"
             @click="commands.underline"
           >
             <i class="fas fa-underline"></i>
@@ -37,7 +37,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.code() }"
+            :class="{ active: isActive.code() }"
             @click="commands.code"
           >
             <i class="fas fa-code"></i>
@@ -45,7 +45,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.paragraph() }"
+            :class="{ active: isActive.paragraph() }"
             @click="commands.paragraph"
           >
             <i class="fas fa-paragraph"></i>
@@ -53,7 +53,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.heading({ level: 1 }) }"
+            :class="{ active: isActive.heading({ level: 1 }) }"
             @click="commands.heading({ level: 1 })"
           >
             H1
@@ -61,7 +61,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.heading({ level: 2 }) }"
+            :class="{ active: isActive.heading({ level: 2 }) }"
             @click="commands.heading({ level: 2 })"
           >
             H2
@@ -69,7 +69,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.heading({ level: 3 }) }"
+            :class="{ active: isActive.heading({ level: 3 }) }"
             @click="commands.heading({ level: 3 })"
           >
             H3
@@ -77,7 +77,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.heading({ level: 4 }) }"
+            :class="{ active: isActive.heading({ level: 4 }) }"
             @click="commands.heading({ level: 4 })"
           >
             H4
@@ -85,7 +85,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.heading({ level: 5 }) }"
+            :class="{ active: isActive.heading({ level: 5 }) }"
             @click="commands.heading({ level: 5 })"
           >
             H5
@@ -93,7 +93,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.heading({ level: 6 }) }"
+            :class="{ active: isActive.heading({ level: 6 }) }"
             @click="commands.heading({ level: 6 })"
           >
             H6
@@ -101,7 +101,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.bullet_list() }"
+            :class="{ active: isActive.bullet_list() }"
             @click="commands.bullet_list"
           >
             <i class="fas fa-list-ul"></i>
@@ -109,7 +109,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.ordered_list() }"
+            :class="{ active: isActive.ordered_list() }"
             @click="commands.ordered_list"
           >
             <i class="fas fa-list-ol"></i>
@@ -117,7 +117,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.blockquote() }"
+            :class="{ active: isActive.blockquote() }"
             @click="commands.blockquote"
           >
             <i class="fas fa-quote-right"></i>
@@ -125,7 +125,7 @@
 
           <button
             class="menubar__button"
-            :class="{ 'is-active': isActive.code_block() }"
+            :class="{ active: isActive.code_block() }"
             @click="commands.code_block"
           >
             <i class="fas fa-paragraph"></i><i class="fas fa-code"></i>
@@ -201,6 +201,58 @@
           <button class="menubar__button copy-markdown" @click="copyMarkdown">
             Copy Markdown
           </button>
+
+          <button
+            class="menubar__button"
+            :class="{ active: showSearchAndReplace }"
+            @click="showSearchAndReplace = !showSearchAndReplace"
+          >
+            Search and replace
+          </button>
+          <template v-if="showSearchAndReplace">
+            <span class="menubar__button">
+              <label for="search">Search</label>
+              <input
+                id="search"
+                @keydown.enter.prevent="editor.commands.find(searchTerm)"
+                type="text"
+                v-model="searchTerm"
+              />
+            </span>
+            <span class="menubar__button">
+              <label for="replace">Replace</label>
+              <input
+                id="replace"
+                @keydown.enter.prevent="editor.commands.replace(replaceWith)"
+                type="text"
+                v-model="replaceWith"
+              />
+            </span>
+            <button
+              class="menubar__button"
+              @click="editor.commands.find(searchTerm)"
+            >
+              Find
+            </button>
+            <button
+              class="menubar__button"
+              @click="editor.commands.clearSearch()"
+            >
+              Clear
+            </button>
+            <button
+              class="menubar__button"
+              @click="editor.commands.replace(replaceWith)"
+            >
+              Replace
+            </button>
+            <button
+              class="menubar__button"
+              @click="editor.commands.replaceAll(replaceWith)"
+            >
+              Replace All
+            </button>
+          </template>
         </div>
       </editor-menu-bar>
       <editor-menu-bubble
@@ -211,7 +263,7 @@
       >
         <div
           class="menububble"
-          :class="{ 'is-active': menu.isActive }"
+          :class="{ active: menu.isActive }"
           :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
         >
           <form
@@ -241,7 +293,7 @@
             <button
               class="menububble__button button"
               @click="showLinkMenu(getMarkAttrs('link'))"
-              :class="{ 'is-active': isActive.link() }"
+              :class="{ active: isActive.link() }"
             >
               <span>{{ isActive.link() ? "Update Link" : "Add Link" }}</span>
               <i class="fas fa-link"></i>
@@ -313,6 +365,7 @@ import {
   TableCell,
   TableRow,
   Underline,
+  Search,
 } from "tiptap-extensions";
 import prettier from "prettier/standalone";
 import parserHtml from "prettier/parser-html";
@@ -385,6 +438,9 @@ export default {
           new TableCell(),
           new TableRow(),
           new Underline(),
+          new Search({
+            disableRegex: false,
+          }),
         ],
         content: initialContent,
         onUpdate: ({ getHTML }) => {
@@ -395,6 +451,9 @@ export default {
       linkUrl: null,
       linkMenuIsActive: false,
       viewMode: "html", // or "markdown"
+      showSearchAndReplace: false,
+      searchTerm: "",
+      replaceWith: "",
     };
   },
   methods: {
@@ -481,12 +540,19 @@ export default {
   color: white;
   border-radius: 4px;
 }
+.find {
+  background: rgba(255, 213, 0, 0.5);
+}
 </style>
 
 <style scoped>
 .editor {
   position: relative;
   margin-bottom: 1rem;
+}
+
+.input-group {
+  display: flex;
 }
 
 .menubar {
@@ -504,7 +570,7 @@ export default {
   background: #fff;
   border: 1px solid #e3e3e300;
   /* border-radius: 6px; */
-  margin: 0 1px;
+  margin: 0.5rem 1px;
   padding: 0.6rem 1.2rem;
   display: flex;
   align-items: center;
@@ -519,13 +585,20 @@ export default {
   cursor: pointer;
   background: #efefef;
 }
-.menubar__button.is-active {
+.menubar__button.active {
   color: #1379ff;
   background-color: #efefef;
-  font-weight: bolder;
 }
 
-.menububble.is-active {
+.menubar label {
+  display: flex;
+  align-items: center;
+}
+.menubar input {
+  border-radius: 4px;
+}
+
+.menububble.active {
   opacity: 1;
   visibility: visible;
 }
@@ -581,7 +654,7 @@ export default {
 }
 
 .button {
-  padding: .5rem;
+  padding: 0.5rem;
   background: #fff;
   border: 1px solid #000;
 }

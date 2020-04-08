@@ -17,7 +17,7 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
-          HOSTING: firebase
+          VUE_APP_HOSTING: firebase
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:

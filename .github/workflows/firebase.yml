@@ -15,6 +15,9 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+        env:
+          NODE_ENV: production
+          HOSTING: firebase
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:

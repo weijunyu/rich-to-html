@@ -282,7 +282,7 @@
             />
             <button
               class="menububble__button button"
-              @click="setLinkUrl(commands.link, null)"
+              @click="setLinkUrl(commands.link, linkUrl)"
               type="button"
             >
               OK
@@ -293,7 +293,6 @@
             <button
               class="menububble__button button"
               @click="showLinkMenu(getMarkAttrs('link'))"
-              :class="{ active: isActive.link() }"
             >
               <span>{{ isActive.link() ? "Update Link" : "Add Link" }}</span>
               <i class="fas fa-link"></i>
@@ -380,8 +379,18 @@ const initialContent = `<h1>Convert rich text to HTML or Markdown</h1>
 </p>
 <h2>Export HTML or Markdown</h2>
 <p>
-  Convert and export your document as <code>HTML</code> or
-  <code>Markdown</code>.
+  Convert and export your document as
+  <a
+    href="https://developer.mozilla.org/en-US/docs/Web/HTML"
+    rel="noopener noreferrer nofollow"
+    >HTML</a
+  >
+  or
+  <a
+    href="https://www.markdownguide.org/getting-started"
+    rel="noopener noreferrer nofollow"
+    >Markdown</a
+  >.
 </p>
 <p>Based on:</p>
 <ul>
@@ -565,6 +574,8 @@ export default {
   flex-wrap: wrap;
   background-color: #fff;
   border: 1px solid #c3c3c3;
+
+  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.5);
 }
 .menubar__button {
   background: #fff;

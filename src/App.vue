@@ -1,14 +1,21 @@
 <template>
+
   <div class="app">
+
     <div class="editor">
+
       <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
+
         <div class="menubar">
+
           <button
             class="menubar__button"
             :class="{ active: isActive.bold() }"
             @click="commands.bold"
           >
+
             <i class="fas fa-bold"></i>
+
           </button>
 
           <button
@@ -16,7 +23,9 @@
             :class="{ active: isActive.italic() }"
             @click="commands.italic"
           >
+
             <i class="fas fa-italic"></i>
+
           </button>
 
           <button
@@ -24,7 +33,9 @@
             :class="{ active: isActive.strike() }"
             @click="commands.strike"
           >
+
             <i class="fas fa-strikethrough"></i>
+
           </button>
 
           <button
@@ -32,7 +43,9 @@
             :class="{ active: isActive.underline() }"
             @click="commands.underline"
           >
+
             <i class="fas fa-underline"></i>
+
           </button>
 
           <button
@@ -40,7 +53,9 @@
             :class="{ active: isActive.code() }"
             @click="commands.code"
           >
+
             <i class="fas fa-code"></i>
+
           </button>
 
           <button
@@ -48,7 +63,9 @@
             :class="{ active: isActive.paragraph() }"
             @click="commands.paragraph"
           >
+
             <i class="fas fa-paragraph"></i>
+
           </button>
 
           <button
@@ -56,7 +73,7 @@
             :class="{ active: isActive.heading({ level: 1 }) }"
             @click="commands.heading({ level: 1 })"
           >
-            H1
+             H1
           </button>
 
           <button
@@ -64,7 +81,7 @@
             :class="{ active: isActive.heading({ level: 2 }) }"
             @click="commands.heading({ level: 2 })"
           >
-            H2
+             H2
           </button>
 
           <button
@@ -72,7 +89,7 @@
             :class="{ active: isActive.heading({ level: 3 }) }"
             @click="commands.heading({ level: 3 })"
           >
-            H3
+             H3
           </button>
 
           <button
@@ -80,7 +97,7 @@
             :class="{ active: isActive.heading({ level: 4 }) }"
             @click="commands.heading({ level: 4 })"
           >
-            H4
+             H4
           </button>
 
           <button
@@ -88,7 +105,7 @@
             :class="{ active: isActive.heading({ level: 5 }) }"
             @click="commands.heading({ level: 5 })"
           >
-            H5
+             H5
           </button>
 
           <button
@@ -96,7 +113,7 @@
             :class="{ active: isActive.heading({ level: 6 }) }"
             @click="commands.heading({ level: 6 })"
           >
-            H6
+             H6
           </button>
 
           <button
@@ -104,7 +121,9 @@
             :class="{ active: isActive.bullet_list() }"
             @click="commands.bullet_list"
           >
+
             <i class="fas fa-list-ul"></i>
+
           </button>
 
           <button
@@ -112,7 +131,9 @@
             :class="{ active: isActive.ordered_list() }"
             @click="commands.ordered_list"
           >
+
             <i class="fas fa-list-ol"></i>
+
           </button>
 
           <button
@@ -120,7 +141,9 @@
             :class="{ active: isActive.blockquote() }"
             @click="commands.blockquote"
           >
+
             <i class="fas fa-quote-right"></i>
+
           </button>
 
           <button
@@ -128,11 +151,15 @@
             :class="{ active: isActive.code_block() }"
             @click="commands.code_block"
           >
-            <i class="fas fa-paragraph"></i><i class="fas fa-code"></i>
+
+            <i class="fas fa-paragraph"></i>
+
+            <i class="fas fa-code"></i>
+
           </button>
 
           <button class="menubar__button" @click="commands.horizontal_rule">
-            &boxh;
+             &boxh;
           </button>
 
           <button
@@ -145,61 +172,105 @@
               })
             "
           >
+
             <Icon src="/assets/table.svg" alt="insert table" />
+
           </button>
 
           <template v-if="isActive.table()">
+
             <button class="menubar__button" @click="commands.deleteTable">
+
               <Icon src="/assets/delete_table.svg" alt="delete table" />
+
             </button>
+
             <button class="menubar__button" @click="commands.addColumnBefore">
+
               <Icon src="/assets/add_col_before.svg" alt="add column before" />
+
             </button>
+
             <button class="menubar__button" @click="commands.addColumnAfter">
+
               <Icon src="/assets/add_col_after.svg" alt="add column after" />
+
             </button>
+
             <button class="menubar__button" @click="commands.deleteColumn">
+
               <Icon src="/assets/delete_col.svg" alt="delete column" />
+
             </button>
+
             <button class="menubar__button" @click="commands.addRowBefore">
+
               <Icon src="/assets/add_row_before.svg" alt="add row before" />
+
             </button>
+
             <button class="menubar__button" @click="commands.addRowAfter">
+
               <Icon src="/assets/add_row_after.svg" alt="add row after" />
+
             </button>
+
             <button class="menubar__button" @click="commands.deleteRow">
+
               <Icon src="/assets/delete_row.svg" alt="delete row" />
+
             </button>
+
             <button class="menubar__button" @click="commands.toggleCellMerge">
+
               <Icon src="/assets/combine_cells.svg" alt="combine cells" />
+
             </button>
+
           </template>
 
           <button
             class="menubar__button"
             @click="showImagePrompt(commands.image)"
           >
+
             <i class="fas fa-image"></i>
+
           </button>
 
           <button class="menubar__button" @click="commands.undo">
+
             <i class="fas fa-undo"></i>
+
           </button>
 
           <button class="menubar__button" @click="commands.redo">
+
             <i class="fas fa-redo"></i>
+
           </button>
 
           <button class="menubar__button" @click="clearContent">
-            Clear Content
+             Clear Content
           </button>
 
           <button class="menubar__button copy-html" @click="copyHtml">
-            Copy HTML
+             Copy HTML
+          </button>
+
+          <button
+            class="menubar__button copy-minified-html"
+            @click="copyMinifiedHtml"
+          >
+             Copy minified HTML
           </button>
 
           <button class="menubar__button copy-markdown" @click="copyMarkdown">
-            Copy Markdown
+             Copy Markdown
+          </button>
+
+          <button class="menubar__button" @click="loadHtmlFromClipboard">
+             Load HTML from clipboard
           </button>
 
           <button
@@ -207,71 +278,91 @@
             :class="{ active: showSearchAndReplace }"
             @click="showSearchAndReplace = !showSearchAndReplace"
           >
-            Search and replace
+             Search and replace
           </button>
+
           <template v-if="showSearchAndReplace">
+
             <span class="menubar__button">
+
               <label for="search">Search</label>
+
               <input
                 id="search"
                 @keydown.enter.prevent="editor.commands.find(searchTerm)"
                 type="text"
                 v-model="searchTerm"
               />
+
             </span>
+
             <span class="menubar__button">
+
               <label for="replace">Replace</label>
+
               <input
                 id="replace"
                 @keydown.enter.prevent="editor.commands.replace(replaceWith)"
                 type="text"
                 v-model="replaceWith"
               />
+
             </span>
+
             <button
               class="menubar__button"
               @click="editor.commands.find(searchTerm)"
             >
-              Find
+               Find
             </button>
+
             <button
               class="menubar__button"
               @click="editor.commands.clearSearch()"
             >
-              Clear
+               Clear
             </button>
+
             <button
               class="menubar__button"
               @click="editor.commands.replace(replaceWith)"
             >
-              Replace
+               Replace
             </button>
+
             <button
               class="menubar__button"
               @click="editor.commands.replaceAll(replaceWith)"
             >
-              Replace All
+               Replace All
             </button>
+
           </template>
+
         </div>
+
       </editor-menu-bar>
+
       <editor-menu-bubble
         class="menububble"
         :editor="editor"
         @hide="hideLinkMenu"
         v-slot="{ commands, isActive, getMarkAttrs, menu }"
       >
+
         <div
           class="menububble"
           :class="{ active: menu.isActive }"
           :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
         >
+
           <form
             class="menububble__form"
             v-if="linkMenuIsActive"
             @submit.prevent="setLinkUrl(commands.link, linkUrl)"
-            style="display: flex"
+            style="display: flex;"
           >
+
             <input
               class="menububble__input"
               type="text"
@@ -280,65 +371,92 @@
               ref="linkInput"
               @keydown.esc="hideLinkMenu"
             />
+
             <button
               class="menububble__button button"
               @click="setLinkUrl(commands.link, linkUrl)"
               type="button"
             >
-              OK
+               OK
             </button>
+
           </form>
 
           <template v-else>
+
             <button
               class="menububble__button button"
               @click="showLinkMenu(getMarkAttrs('link'))"
             >
+
               <span>{{ isActive.link() ? "Update Link" : "Add Link" }}</span>
+
               <i class="fas fa-link"></i>
+
             </button>
+
           </template>
+
         </div>
+
       </editor-menu-bubble>
+
       <editor-content
         class="editor__content"
         id="editor__content"
         :editor="editor"
       />
+
     </div>
 
     <div class="toggle-view">
+
       <span>
+
         <button
           class="tab"
           :class="{ active: viewMode === 'html' }"
           @click="viewMode = 'html'"
         >
-          View HTML
+           View HTML
         </button>
+
         <button
           class="tab"
           :class="{ active: viewMode === 'markdown' }"
           @click="viewMode = 'markdown'"
         >
-          View Markdown
+           View Markdown
         </button>
+
       </span>
 
       <a href="https://github.com/weijunyu/rich-to-html">
-        <Icon src="/assets/GitHub-Mark-32px.png"></Icon
-      ></a>
+
+        <Icon src="/assets/GitHub-Mark-32px.png"></Icon>
+
+      </a>
+
     </div>
 
     <div class="export" v-if="viewMode === 'html'">
+
       <h3>HTML</h3>
+
       <pre><code>{{ displayedHtml }}</code></pre>
+
     </div>
+
     <div class="export" v-if="viewMode === 'markdown'">
+
       <h3>Markdown</h3>
+
       <pre><code>{{ displayedMarkdown }}</code></pre>
+
     </div>
+
   </div>
+
 </template>
 
 <script>
@@ -372,6 +490,8 @@ import tippy from "tippy.js";
 import ClipboardJS from "clipboard";
 import Turndown from "turndown/lib/turndown.browser.es";
 import Icon from "./components/Icon.vue";
+import { minify } from "html-minifier-terser";
+
 const initialContent = `<h1>Convert rich text to HTML or Markdown</h1>
 <p>
   Start writing, or paste formatted content from HTML documents, Google Docs,
@@ -459,7 +579,7 @@ export default {
       html: initialContent,
       linkUrl: null,
       linkMenuIsActive: false,
-      viewMode: "html", // or "markdown"
+      viewMode: "html",
       showSearchAndReplace: false,
       searchTerm: "",
       replaceWith: "",
@@ -473,12 +593,26 @@ export default {
         },
       });
     },
+    copyMinifiedHtml() {
+      minify(this.html, {
+        collapseWhitespace: true,
+      }).then(
+        (res) =>
+          new ClipboardJS(".copy-minified-html", {
+            text: () => res,
+          })
+      );
+    },
     copyMarkdown() {
       new ClipboardJS(".copy-markdown", {
         text: () => {
           return this.turndown(this.html);
         },
       });
+    },
+    async loadHtmlFromClipboard() {
+      const content = await navigator.clipboard.readText();
+      this.updateContent(content);
     },
     beautify(html) {
       return prettier.format(html, {
@@ -489,6 +623,10 @@ export default {
     turndown(html) {
       let turndownService = new Turndown();
       return turndownService.turndown(html);
+    },
+    updateContent(content) {
+      this.editor.setContent(content);
+      this.html = content;
     },
     clearContent() {
       this.editor.clearContent(true);
@@ -525,14 +663,13 @@ export default {
     },
   },
   mounted() {
-    tippy(".copy-html", {
+    const tippyConfig = {
       content: "Copied",
       trigger: "click",
-    });
-    tippy(".copy-markdown", {
-      content: "Copied",
-      trigger: "click",
-    });
+    };
+    tippy(".copy-html", tippyConfig);
+    tippy(".copy-minified-html", tippyConfig);
+    tippy(".copy-markdown", tippyConfig);
   },
 };
 </script>
@@ -542,6 +679,7 @@ export default {
 .ProseMirror-focused {
   outline: none;
 }
+
 .ProseMirror > pre {
   padding: 1rem;
   margin: 0.5rem;
@@ -549,6 +687,7 @@ export default {
   color: white;
   border-radius: 4px;
 }
+
 .find {
   background: rgba(255, 213, 0, 0.5);
 }
@@ -577,6 +716,7 @@ export default {
 
   box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.5);
 }
+
 .menubar__button {
   background: #fff;
   border: 1px solid #e3e3e300;
@@ -592,10 +732,12 @@ export default {
 
   transition: all 0.2s;
 }
+
 .menubar__button:hover {
   cursor: pointer;
   background: #efefef;
 }
+
 .menubar__button.active {
   color: #1379ff;
   background-color: #efefef;
@@ -605,6 +747,7 @@ export default {
   display: flex;
   align-items: center;
 }
+
 .menubar input {
   border-radius: 4px;
 }
@@ -669,10 +812,12 @@ export default {
   background: #fff;
   border: 1px solid #000;
 }
+
 .button:hover {
   cursor: pointer;
   background: #efefef;
 }
+
 .button:active,
 .button.active {
   color: #1379ff;
@@ -683,3 +828,4 @@ export default {
   overflow: auto;
 }
 </style>
+

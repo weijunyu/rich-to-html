@@ -287,7 +287,7 @@
 
       </editor-menu-bubble>
 
-      <editor-content class="editor__content" id="editor__content" :editor="editor" />
+      <editor-content class="editor__content" id="editor__content" :style="editorContentStyle" :editor="editor" />
 
     </div>
 
@@ -446,9 +446,16 @@ export default {
           }),
         ],
         content: initialContent,
+        autoFocus: true,
         onUpdate: ({ getHTML }) => {
           this.html = getHTML();
         },
+        onFocus: () => {
+          this.isEditorFocused = true
+        },
+        onBlur: () => {
+          this.isEditorFocused = false
+        }
       }),
       html: initialContent,
       linkUrl: null,
@@ -457,6 +464,7 @@ export default {
       showSearchAndReplace: false,
       searchTerm: "",
       replaceWith: "",
+      isEditorFocused: false,
     };
   },
   methods: {
@@ -535,6 +543,9 @@ export default {
     displayedMarkdown() {
       return this.turndown(this.html);
     },
+    editorContentStyle() {
+      return { border: this.isEditorFocused ? "0.5px solid #1b89e9" : "0.5px solid #e0e0e0" }
+    }
   },
   mounted() {
     const tippyConfig = {
@@ -646,7 +657,8 @@ export default {
 }
 
 .editor__content {
-  border: 1px solid grey;
+  border-radius: 3px;
+  transition: 0.2s all;
 }
 
 .toggle-view {

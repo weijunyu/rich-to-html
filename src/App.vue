@@ -8,149 +8,91 @@
 
         <div class="menubar">
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.bold() }"
-            @click="commands.bold"
-          >
+          <button class="menubar__button" :class="{ active: isActive.bold() }" @click="commands.bold">
 
             <i class="fas fa-bold"></i>
 
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.italic() }"
-            @click="commands.italic"
-          >
+          <button class="menubar__button" :class="{ active: isActive.italic() }" @click="commands.italic">
 
             <i class="fas fa-italic"></i>
 
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.strike() }"
-            @click="commands.strike"
-          >
+          <button class="menubar__button" :class="{ active: isActive.strike() }" @click="commands.strike">
 
             <i class="fas fa-strikethrough"></i>
 
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.underline() }"
-            @click="commands.underline"
-          >
+          <button class="menubar__button" :class="{ active: isActive.underline() }" @click="commands.underline">
 
             <i class="fas fa-underline"></i>
 
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.code() }"
-            @click="commands.code"
-          >
+          <button class="menubar__button" :class="{ active: isActive.code() }" @click="commands.code">
 
             <i class="fas fa-code"></i>
 
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.paragraph() }"
-            @click="commands.paragraph"
-          >
+          <button class="menubar__button" :class="{ active: isActive.paragraph() }" @click="commands.paragraph">
 
             <i class="fas fa-paragraph"></i>
 
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.heading({ level: 1 }) }"
-            @click="commands.heading({ level: 1 })"
-          >
-             H1
+          <button class="menubar__button" :class="{ active: isActive.heading({ level: 1 }) }"
+            @click="commands.heading({ level: 1 })">
+            H1
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.heading({ level: 2 }) }"
-            @click="commands.heading({ level: 2 })"
-          >
-             H2
+          <button class="menubar__button" :class="{ active: isActive.heading({ level: 2 }) }"
+            @click="commands.heading({ level: 2 })">
+            H2
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.heading({ level: 3 }) }"
-            @click="commands.heading({ level: 3 })"
-          >
-             H3
+          <button class="menubar__button" :class="{ active: isActive.heading({ level: 3 }) }"
+            @click="commands.heading({ level: 3 })">
+            H3
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.heading({ level: 4 }) }"
-            @click="commands.heading({ level: 4 })"
-          >
-             H4
+          <button class="menubar__button" :class="{ active: isActive.heading({ level: 4 }) }"
+            @click="commands.heading({ level: 4 })">
+            H4
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.heading({ level: 5 }) }"
-            @click="commands.heading({ level: 5 })"
-          >
-             H5
+          <button class="menubar__button" :class="{ active: isActive.heading({ level: 5 }) }"
+            @click="commands.heading({ level: 5 })">
+            H5
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.heading({ level: 6 }) }"
-            @click="commands.heading({ level: 6 })"
-          >
-             H6
+          <button class="menubar__button" :class="{ active: isActive.heading({ level: 6 }) }"
+            @click="commands.heading({ level: 6 })">
+            H6
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.bullet_list() }"
-            @click="commands.bullet_list"
-          >
+          <button class="menubar__button" :class="{ active: isActive.bullet_list() }" @click="commands.bullet_list">
 
             <i class="fas fa-list-ul"></i>
 
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.ordered_list() }"
-            @click="commands.ordered_list"
-          >
+          <button class="menubar__button" :class="{ active: isActive.ordered_list() }" @click="commands.ordered_list">
 
             <i class="fas fa-list-ol"></i>
 
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.blockquote() }"
-            @click="commands.blockquote"
-          >
+          <button class="menubar__button" :class="{ active: isActive.blockquote() }" @click="commands.blockquote">
 
             <i class="fas fa-quote-right"></i>
 
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: isActive.code_block() }"
-            @click="commands.code_block"
-          >
+          <button class="menubar__button" :class="{ active: isActive.code_block() }" @click="commands.code_block">
 
             <i class="fas fa-paragraph"></i>
 
@@ -159,19 +101,16 @@
           </button>
 
           <button class="menubar__button" @click="commands.horizontal_rule">
-             &boxh;
+            &boxh;
           </button>
 
-          <button
-            class="menubar__button"
-            @click="
-              commands.createTable({
-                rowsCount: 3,
-                colsCount: 3,
-                withHeaderRow: false,
-              })
-            "
-          >
+          <button class="menubar__button" @click="
+            commands.createTable({
+              rowsCount: 3,
+              colsCount: 3,
+              withHeaderRow: false,
+            })
+          ">
 
             <Icon src="/assets/table.svg" alt="insert table" />
 
@@ -229,10 +168,7 @@
 
           </template>
 
-          <button
-            class="menubar__button"
-            @click="showImagePrompt(commands.image)"
-          >
+          <button class="menubar__button" @click="showImagePrompt(commands.image)">
 
             <i class="fas fa-image"></i>
 
@@ -251,34 +187,28 @@
           </button>
 
           <button class="menubar__button" @click="clearContent">
-             Clear Content
+            Clear Content
           </button>
 
           <button class="menubar__button copy-html" @click="copyHtml">
-             Copy HTML
+            Copy HTML
           </button>
 
-          <button
-            class="menubar__button copy-minified-html"
-            @click="copyMinifiedHtml"
-          >
-             Copy minified HTML
+          <button class="menubar__button copy-minified-html" @click="copyMinifiedHtml">
+            Copy minified HTML
           </button>
 
           <button class="menubar__button copy-markdown" @click="copyMarkdown">
-             Copy Markdown
+            Copy Markdown
           </button>
 
           <button class="menubar__button" @click="loadHtmlFromClipboard">
-             Load HTML from clipboard
+            Load HTML from clipboard
           </button>
 
-          <button
-            class="menubar__button"
-            :class="{ active: showSearchAndReplace }"
-            @click="showSearchAndReplace = !showSearchAndReplace"
-          >
-             Search and replace
+          <button class="menubar__button" :class="{ active: showSearchAndReplace }"
+            @click="showSearchAndReplace = !showSearchAndReplace">
+            Search and replace
           </button>
 
           <template v-if="showSearchAndReplace">
@@ -287,12 +217,8 @@
 
               <label for="search">Search</label>
 
-              <input
-                id="search"
-                @keydown.enter.prevent="editor.commands.find(searchTerm)"
-                type="text"
-                v-model="searchTerm"
-              />
+              <input id="search" @keydown.enter.prevent="editor.commands.find(searchTerm)" type="text"
+                v-model="searchTerm" />
 
             </span>
 
@@ -300,41 +226,25 @@
 
               <label for="replace">Replace</label>
 
-              <input
-                id="replace"
-                @keydown.enter.prevent="editor.commands.replace(replaceWith)"
-                type="text"
-                v-model="replaceWith"
-              />
+              <input id="replace" @keydown.enter.prevent="editor.commands.replace(replaceWith)" type="text"
+                v-model="replaceWith" />
 
             </span>
 
-            <button
-              class="menubar__button"
-              @click="editor.commands.find(searchTerm)"
-            >
-               Find
+            <button class="menubar__button" @click="editor.commands.find(searchTerm)">
+              Find
             </button>
 
-            <button
-              class="menubar__button"
-              @click="editor.commands.clearSearch()"
-            >
-               Clear
+            <button class="menubar__button" @click="editor.commands.clearSearch()">
+              Clear
             </button>
 
-            <button
-              class="menubar__button"
-              @click="editor.commands.replace(replaceWith)"
-            >
-               Replace
+            <button class="menubar__button" @click="editor.commands.replace(replaceWith)">
+              Replace
             </button>
 
-            <button
-              class="menubar__button"
-              @click="editor.commands.replaceAll(replaceWith)"
-            >
-               Replace All
+            <button class="menubar__button" @click="editor.commands.replaceAll(replaceWith)">
+              Replace All
             </button>
 
           </template>
@@ -343,51 +253,27 @@
 
       </editor-menu-bar>
 
-      <editor-menu-bubble
-        class="menububble"
-        :editor="editor"
-        @hide="hideLinkMenu"
-        v-slot="{ commands, isActive, getMarkAttrs, menu }"
-      >
+      <editor-menu-bubble class="menububble" :editor="editor" @hide="hideLinkMenu"
+        v-slot="{ commands, isActive, getMarkAttrs, menu }">
 
-        <div
-          class="menububble"
-          :class="{ active: menu.isActive }"
-          :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
-        >
+        <div class="menububble" :class="{ active: menu.isActive }"
+          :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`">
 
-          <form
-            class="menububble__form"
-            v-if="linkMenuIsActive"
-            @submit.prevent="setLinkUrl(commands.link, linkUrl)"
-            style="display: flex;"
-          >
+          <form class="menububble__form" v-if="linkMenuIsActive" @submit.prevent="setLinkUrl(commands.link, linkUrl)"
+            style="display: flex;">
 
-            <input
-              class="menububble__input"
-              type="text"
-              v-model="linkUrl"
-              placeholder="https://"
-              ref="linkInput"
-              @keydown.esc="hideLinkMenu"
-            />
+            <input class="menububble__input" type="text" v-model="linkUrl" placeholder="https://" ref="linkInput"
+              @keydown.esc="hideLinkMenu" />
 
-            <button
-              class="menububble__button button"
-              @click="setLinkUrl(commands.link, linkUrl)"
-              type="button"
-            >
-               OK
+            <button class="menububble__button button" @click="setLinkUrl(commands.link, linkUrl)" type="button">
+              OK
             </button>
 
           </form>
 
           <template v-else>
 
-            <button
-              class="menububble__button button"
-              @click="showLinkMenu(getMarkAttrs('link'))"
-            >
+            <button class="menububble__button button" @click="showLinkMenu(getMarkAttrs('link'))">
 
               <span>{{ isActive.link() ? "Update Link" : "Add Link" }}</span>
 
@@ -401,11 +287,7 @@
 
       </editor-menu-bubble>
 
-      <editor-content
-        class="editor__content"
-        id="editor__content"
-        :editor="editor"
-      />
+      <editor-content class="editor__content" id="editor__content" :editor="editor" />
 
     </div>
 
@@ -413,20 +295,12 @@
 
       <span>
 
-        <button
-          class="tab"
-          :class="{ active: viewMode === 'html' }"
-          @click="viewMode = 'html'"
-        >
-           View HTML
+        <button class="tab" :class="{ active: viewMode === 'html' }" @click="viewMode = 'html'">
+          View HTML
         </button>
 
-        <button
-          class="tab"
-          :class="{ active: viewMode === 'markdown' }"
-          @click="viewMode = 'markdown'"
-        >
-           View Markdown
+        <button class="tab" :class="{ active: viewMode === 'markdown' }" @click="viewMode = 'markdown'">
+          View Markdown
         </button>
 
       </span>
@@ -680,7 +554,7 @@ export default {
   outline: none;
 }
 
-.ProseMirror > pre {
+.ProseMirror>pre {
   padding: 1rem;
   margin: 0.5rem;
   background: #3e3e3e;

@@ -59,195 +59,201 @@
             H3
           </button>
 
-          <button class="menubar__button" :class="{ active: isActive.heading({ level: 4 }) }"
-            @click="commands.heading({ level: 4 })">
-            H4
-          </button>
+          <template v-if="expandMenuBar">
 
-          <button class="menubar__button" :class="{ active: isActive.heading({ level: 5 }) }"
-            @click="commands.heading({ level: 5 })">
-            H5
-          </button>
+            <button class="menubar__button" :class="{ active: isActive.heading({ level: 4 }) }"
+              @click="commands.heading({ level: 4 })">
+              H4
+            </button>
 
-          <button class="menubar__button" :class="{ active: isActive.heading({ level: 6 }) }"
-            @click="commands.heading({ level: 6 })">
-            H6
-          </button>
+            <button class="menubar__button" :class="{ active: isActive.heading({ level: 5 }) }"
+              @click="commands.heading({ level: 5 })">
+              H5
+            </button>
 
-          <button class="menubar__button" :class="{ active: isActive.bullet_list() }" @click="commands.bullet_list">
+            <button class="menubar__button" :class="{ active: isActive.heading({ level: 6 }) }"
+              @click="commands.heading({ level: 6 })">
+              H6
+            </button>
 
-            <i class="fas fa-list-ul"></i>
+            <button class="menubar__button" :class="{ active: isActive.bullet_list() }" @click="commands.bullet_list">
 
-          </button>
-
-          <button class="menubar__button" :class="{ active: isActive.ordered_list() }" @click="commands.ordered_list">
-
-            <i class="fas fa-list-ol"></i>
-
-          </button>
-
-          <button class="menubar__button" :class="{ active: isActive.blockquote() }" @click="commands.blockquote">
-
-            <i class="fas fa-quote-right"></i>
-
-          </button>
-
-          <button class="menubar__button" :class="{ active: isActive.code_block() }" @click="commands.code_block">
-
-            <i class="fas fa-paragraph"></i>
-
-            <i class="fas fa-code"></i>
-
-          </button>
-
-          <button class="menubar__button" @click="commands.horizontal_rule">
-            &boxh;
-          </button>
-
-          <button class="menubar__button" @click="
-            commands.createTable({
-              rowsCount: 3,
-              colsCount: 3,
-              withHeaderRow: false,
-            })
-          ">
-
-            <Icon src="/assets/table.svg" alt="insert table" />
-
-          </button>
-
-          <template v-if="isActive.table()">
-
-            <button class="menubar__button" @click="commands.deleteTable">
-
-              <Icon src="/assets/delete_table.svg" alt="delete table" />
+              <i class="fas fa-list-ul"></i>
 
             </button>
 
-            <button class="menubar__button" @click="commands.addColumnBefore">
+            <button class="menubar__button" :class="{ active: isActive.ordered_list() }" @click="commands.ordered_list">
 
-              <Icon src="/assets/add_col_before.svg" alt="add column before" />
-
-            </button>
-
-            <button class="menubar__button" @click="commands.addColumnAfter">
-
-              <Icon src="/assets/add_col_after.svg" alt="add column after" />
+              <i class="fas fa-list-ol"></i>
 
             </button>
 
-            <button class="menubar__button" @click="commands.deleteColumn">
+            <button class="menubar__button" :class="{ active: isActive.blockquote() }" @click="commands.blockquote">
 
-              <Icon src="/assets/delete_col.svg" alt="delete column" />
-
-            </button>
-
-            <button class="menubar__button" @click="commands.addRowBefore">
-
-              <Icon src="/assets/add_row_before.svg" alt="add row before" />
+              <i class="fas fa-quote-right"></i>
 
             </button>
 
-            <button class="menubar__button" @click="commands.addRowAfter">
+            <button class="menubar__button" :class="{ active: isActive.code_block() }" @click="commands.code_block">
 
-              <Icon src="/assets/add_row_after.svg" alt="add row after" />
+              <i class="fas fa-paragraph"></i>
 
-            </button>
-
-            <button class="menubar__button" @click="commands.deleteRow">
-
-              <Icon src="/assets/delete_row.svg" alt="delete row" />
+              <i class="fas fa-code"></i>
 
             </button>
 
-            <button class="menubar__button" @click="commands.toggleCellMerge">
+            <button class="menubar__button" @click="commands.horizontal_rule">
+              &boxh;
+            </button>
 
-              <Icon src="/assets/combine_cells.svg" alt="combine cells" />
+            <button class="menubar__button" @click="
+              commands.createTable({
+                rowsCount: 3,
+                colsCount: 3,
+                withHeaderRow: false,
+              })
+            ">
+
+              <Icon src="/assets/table.svg" alt="insert table" />
 
             </button>
 
+            <template v-if="isActive.table()">
+
+              <button class="menubar__button" @click="commands.deleteTable">
+
+                <Icon src="/assets/delete_table.svg" alt="delete table" />
+
+              </button>
+
+              <button class="menubar__button" @click="commands.addColumnBefore">
+
+                <Icon src="/assets/add_col_before.svg" alt="add column before" />
+
+              </button>
+
+              <button class="menubar__button" @click="commands.addColumnAfter">
+
+                <Icon src="/assets/add_col_after.svg" alt="add column after" />
+
+              </button>
+
+              <button class="menubar__button" @click="commands.deleteColumn">
+
+                <Icon src="/assets/delete_col.svg" alt="delete column" />
+
+              </button>
+
+              <button class="menubar__button" @click="commands.addRowBefore">
+
+                <Icon src="/assets/add_row_before.svg" alt="add row before" />
+
+              </button>
+
+              <button class="menubar__button" @click="commands.addRowAfter">
+
+                <Icon src="/assets/add_row_after.svg" alt="add row after" />
+
+              </button>
+
+              <button class="menubar__button" @click="commands.deleteRow">
+
+                <Icon src="/assets/delete_row.svg" alt="delete row" />
+
+              </button>
+
+              <button class="menubar__button" @click="commands.toggleCellMerge">
+
+                <Icon src="/assets/combine_cells.svg" alt="combine cells" />
+
+              </button>
+
+            </template>
+
+            <button class="menubar__button" @click="showImagePrompt(commands.image)">
+
+              <i class="fas fa-image"></i>
+
+            </button>
+
+            <button class="menubar__button" @click="commands.undo">
+
+              <i class="fas fa-undo"></i>
+
+            </button>
+
+            <button class="menubar__button" @click="commands.redo">
+
+              <i class="fas fa-redo"></i>
+
+            </button>
+
+            <button class="menubar__button" @click="clearContent">
+              Clear Content
+            </button>
+
+            <button class="menubar__button copy-html" @click="copyHtml">
+              Copy HTML
+            </button>
+
+            <button class="menubar__button copy-minified-html" @click="copyMinifiedHtml">
+              Copy minified HTML
+            </button>
+
+            <button class="menubar__button copy-markdown" @click="copyMarkdown">
+              Copy Markdown
+            </button>
+
+            <button class="menubar__button" @click="loadHtmlFromClipboard">
+              Load HTML from clipboard
+            </button>
+
+            <button class="menubar__button" :class="{ active: showSearchAndReplace }"
+              @click="showSearchAndReplace = !showSearchAndReplace">
+              Search and replace
+            </button>
+
+            <template v-if="showSearchAndReplace">
+
+              <span class="menubar__button">
+
+                <label for="search">Search</label>
+
+                <input id="search" @keydown.enter.prevent="editor.commands.find(searchTerm)" type="text"
+                  v-model="searchTerm" />
+
+              </span>
+
+              <span class="menubar__button">
+
+                <label for="replace">Replace</label>
+
+                <input id="replace" @keydown.enter.prevent="editor.commands.replace(replaceWith)" type="text"
+                  v-model="replaceWith" />
+
+              </span>
+
+              <button class="menubar__button" @click="editor.commands.find(searchTerm)">
+                Find
+              </button>
+
+              <button class="menubar__button" @click="editor.commands.clearSearch()">
+                Clear
+              </button>
+
+              <button class="menubar__button" @click="editor.commands.replace(replaceWith)">
+                Replace
+              </button>
+
+              <button class="menubar__button" @click="editor.commands.replaceAll(replaceWith)">
+                Replace All
+              </button>
+            </template>
           </template>
 
-          <button class="menubar__button" @click="showImagePrompt(commands.image)">
-
-            <i class="fas fa-image"></i>
-
+          <button class="menubar__button" @click="toggleAdvancedControls">
+            {{ expandMenuBar? "« Less": "» More" }}
           </button>
-
-          <button class="menubar__button" @click="commands.undo">
-
-            <i class="fas fa-undo"></i>
-
-          </button>
-
-          <button class="menubar__button" @click="commands.redo">
-
-            <i class="fas fa-redo"></i>
-
-          </button>
-
-          <button class="menubar__button" @click="clearContent">
-            Clear Content
-          </button>
-
-          <button class="menubar__button copy-html" @click="copyHtml">
-            Copy HTML
-          </button>
-
-          <button class="menubar__button copy-minified-html" @click="copyMinifiedHtml">
-            Copy minified HTML
-          </button>
-
-          <button class="menubar__button copy-markdown" @click="copyMarkdown">
-            Copy Markdown
-          </button>
-
-          <button class="menubar__button" @click="loadHtmlFromClipboard">
-            Load HTML from clipboard
-          </button>
-
-          <button class="menubar__button" :class="{ active: showSearchAndReplace }"
-            @click="showSearchAndReplace = !showSearchAndReplace">
-            Search and replace
-          </button>
-
-          <template v-if="showSearchAndReplace">
-
-            <span class="menubar__button">
-
-              <label for="search">Search</label>
-
-              <input id="search" @keydown.enter.prevent="editor.commands.find(searchTerm)" type="text"
-                v-model="searchTerm" />
-
-            </span>
-
-            <span class="menubar__button">
-
-              <label for="replace">Replace</label>
-
-              <input id="replace" @keydown.enter.prevent="editor.commands.replace(replaceWith)" type="text"
-                v-model="replaceWith" />
-
-            </span>
-
-            <button class="menubar__button" @click="editor.commands.find(searchTerm)">
-              Find
-            </button>
-
-            <button class="menubar__button" @click="editor.commands.clearSearch()">
-              Clear
-            </button>
-
-            <button class="menubar__button" @click="editor.commands.replace(replaceWith)">
-              Replace
-            </button>
-
-            <button class="menubar__button" @click="editor.commands.replaceAll(replaceWith)">
-              Replace All
-            </button>
-
-          </template>
 
         </div>
 
@@ -465,6 +471,7 @@ export default {
       searchTerm: "",
       replaceWith: "",
       isEditorFocused: false,
+      expandMenuBar: false,
     };
   },
   methods: {
@@ -535,6 +542,9 @@ export default {
         command({ src });
       }
     },
+    toggleAdvancedControls() {
+      this.expandMenuBar = !this.expandMenuBar
+    }
   },
   computed: {
     displayedHtml() {
@@ -544,7 +554,7 @@ export default {
       return this.turndown(this.html);
     },
     editorContentStyle() {
-      return { border: this.isEditorFocused ? "0.5px solid #1b89e9" : "0.5px solid #e0e0e0" }
+      return { border: this.isEditorFocused ? "0.5px solid #1379ff" : "0.5px solid #e0e0e0" }
     }
   },
   mounted() {

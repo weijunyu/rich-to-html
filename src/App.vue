@@ -712,9 +712,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
-  border: 1px solid #c3c3c3;
-
-  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.5);
 }
 
 .menubar__button {
